@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas | Sistema de Ventas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">Sistema de Ventas</div>
+      <nav class="nav">
+        <a href="index.html" class="">Inicio</a>
+<a href="clientes.html" class="">Clientes</a>
+<a href="productos.html" class="">Productos</a>
+<a href="categorias.html" class="">Categorías</a>
+<a href="ventas.html" class="active">Ventas</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="page-header">
+  <h1>Ventas</h1>
+  <p>Una venta puede contener varios productos gracias a detalle_ventas.</p>
+</header>
+
+<section class="panel">
+  <h2>Nueva venta</h2>
+  <div id="mensaje" class="message"></div>
+
+  <div class="field">
+    <label for="cliente">Cliente</label>
+    <select id="cliente"></select>
+  </div>
+
+  <div class="sale-builder" style="margin-top:14px">
+    <div class="field">
+      <label for="producto">Producto</label>
+      <select id="producto"></select>
+    </div>
+    <div class="field">
+      <label for="cantidad">Cantidad</label>
+      <input id="cantidad" type="number" min="1" value="1">
+    </div>
+    <button class="btn-primary" id="agregarProducto">Agregar</button>
+  </div>
+
+  <div class="table-wrap" style="margin-top:18px">
+    <table>
+      <thead><tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th><th></th></tr></thead>
+      <tbody id="carritoBody"></tbody>
+    </table>
+  </div>
+  <div class="total">Total: <span id="totalActual">$0</span></div>
+  <div class="actions"><button class="btn-primary" id="guardarVenta">Guardar venta</button></div>
+</section>
+
+<section class="panel" style="margin-top:18px">
+  <h2>Ventas registradas</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Fecha</th><th>Cliente</th><th>Total</th><th>Detalle</th></tr></thead>
+      <tbody id="ventasBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<div class="modal" id="detalleModal">
+  <div class="modal-content">
+    <div class="actions" style="justify-content:space-between;margin-top:0">
+      <h2>Detalle de venta</h2>
+      <button class="btn-secondary" id="cerrarModal">Cerrar</button>
+    </div>
+    <div id="detalleContenido"></div>
+  </div>
+</div>
+    </main>
+  </div>
+  <script src="js/ventas.js"></script>
+</body>
+</html>
