@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías | Sistema de Ventas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">Sistema de Ventas</div>
+      <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="productos.html">Productos</a>
+        <a href="categorias.html" class="active">Categorías</a>
+        <a href="ventas.html">Ventas</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="page-header">
+        <h1>Categorías</h1>
+        <p>Las categorías son registros independientes que se relacionan con los productos.</p>
+      </header>
+
+      <section class="panel">
+        <h2>Registrar categoría</h2>
+        <div id="mensaje" class="message"></div>
+        <form id="categoriaForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" required>
+            </div>
+            <div class="field">
+              <label for="descripcion">Descripción</label>
+              <input id="descripcion" >
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn-primary" type="submit">Guardar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" style="margin-top:18px">
+        <h2>Listado de categorías</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody id="categoriasBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/categorias.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Ventas</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="brand">Sistema de Ventas</div>
+                <nav class="nav">
+                     <a href="index.html" class="active" >Inicio</a>
+                     <a href="clientes.html" class="active" >Clientes</a>
+                     <a href="productos.html" class="active" >Productos</a>
+                     <a href="categorias.html" class="active" >Categorías</a>
+                     <a href="ventas.html" class="active" >Ventas</a>
+
+                </nav>
+            </aside>
+          <main class="main">
+            <header class="page-header">
+                <h1>Panel Principal </h1>
+                <p>Ejemplo educativo:
+                    MySQL -> Node.js -> API REST -> Javascript -> HTML 
+                </p>
+            </header>
+            <section class="grid cards">
+                <div class="card"><small>Clientes</small><strong id="totalClientes">-</strong></div>
+                <div class="card"><small>Productos</small><strong id="totalProductos">-</strong></div>
+                <div class="card"><small>Ventas</small><strong id="totalVentas">-</strong></div>
+                <div class="card"><small>Total vendido</small><strong id="dineroVendido">-</strong></div>
+               
+        </section>
+
+        <section class="panel" style="margin-top: 18px;">
+            <h2> ¿Qué demuestra este proyecto?</h2>
+            <p> El navegador nunca consulta MySQL directamente.
+                Javascript llama a una API; Express recibe la petición; el
+                controlador coordina; el modelo ejecuta SQL y
+                la API responde con JSON. 
+            </p>
+         </section>"
+       </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+    </body>
+</html>
