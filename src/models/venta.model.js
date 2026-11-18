@@ -1,26 +1,35 @@
 const pool = require('../config/db');
 
-async function obtenerVentas() {
+async function obtenerVentas(usuario) {
+  const soloUsuario = usuario.rol === 'trabajador';
   const [rows] = await pool.execute(`
-          SELECT v.id_venta, v.fecha, v.total, v.id_cliente,
-          CONCAT(c.nombre, ' ', c.apellido) AS cliente
+          SELECT v.id_venta, v.fecha, v.total, v.id_cliente, v.id_usuario,
+          CONCAT(c.nombre, ' ', c.apellido) AS cliente,
+          u.nombre AS usuario
           FROM ventas v
-          INNER JOIN clientes c 
+          INNER JOIN clientes c
           ON v.id_cliente = c.id_cliente
+          LEFT JOIN usuarios u
+          ON v.id_usuario = u.id_usuario
+          ${soloUsuario ? 'WHERE v.id_usuario = ?' : ''}
           ORDER BY v.id_venta DESC
-        `);
+        `, soloUsuario ? [usuario.id_usuario] : []);
   return rows;
 }
 
 async function obtenerVentaPorid(id) {
-  const [ventas] = await pool.execute(`
-          SELECT v.id_venta, v.fecha, v.total, v.id_cliente,
-          CONCAT(c.nombre, ' ', c.apellido) AS cliente
+  const [rows] = await pool.execute(`
+          SELECT v.id_venta, v.fecha, v.total, v.id_cliente, v.id_usuario,
+          CONCAT(c.nombre, ' ', c.apellido) AS cliente,
+          u.nombre AS usuario
           FROM ventas v
-          INNER JOIN clientes c 
+          INNER JOIN clientes c
           ON v.id_cliente = c.id_cliente
+          LEFT JOIN usuarios u
+          ON v.id_usuario = u.id_usuario
           WHERE v.id_venta = ?
         `, [id]);
+    const ventas = rows;
     if (!ventas [0]) return null;  
 
     const [detalles] = await pool.execute(`
@@ -34,7 +43,7 @@ async function obtenerVentaPorid(id) {
     return { ...ventas[0], detalles };
 }
 
-async function crearVenta({ id_cliente, detalles }) {
+async function crearVenta({ id_cliente, detalles, id_usuario }) {
   const connection = await pool.getConnection();
 
   try {
@@ -74,8 +83,8 @@ async function crearVenta({ id_cliente, detalles }) {
     const fecha = new Date().toISOString().slice(0,10);
 
     const[venta] = await connection.execute(`
-      INSERT INTO ventas (fecha, total, id_cliente) VALUES(?,?,?)
-      `,[fecha, total, id_cliente]
+      INSERT INTO ventas (fecha, total, id_cliente, id_usuario) VALUES(?,?,?,?)
+      `,[fecha, total, id_cliente, id_usuario]
     );  
     for(const item of calculados){
       await connection.execute(`

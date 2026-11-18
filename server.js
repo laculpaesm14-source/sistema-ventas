@@ -6,6 +6,9 @@ const PORT = Number(process.env.PORT || 3000);
 
 async function iniciarServidor() {
     try {
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET no está configurado.');
+        }
         const connection = await pool.getConnection();
         console.log('base de datos conectada correctamente');
         app.listen(PORT, () => {

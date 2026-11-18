@@ -14,8 +14,11 @@
         <a href="index.html" class="">Inicio</a>
 <a href="clientes.html" class="">Clientes</a>
 <a href="productos.html" class="">Productos</a>
-<a href="categorias.html" class="">Categorías</a>
+<a href="categorias.html" class="" data-roles="dueño administrador">Categorías</a>
 <a href="ventas.html" class="active">Ventas</a>
+<a href="usuarios.html" data-roles="dueño">Usuarios</a>
+<p id="usuarioActual"></p>
+<button id="cerrarSesion" type="button" class="btn-secondary">Cerrar sesión</button>
       </nav>
     </aside>
     <main class="main">
@@ -76,6 +79,7 @@
 </div>
     </main>
   </div>
+  <script src="js/sesion.js"></script>
   <script src="js/ventas.js"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión | Sistema de Ventas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="main">
+    <section class="panel" style="max-width:480px;margin:12vh auto 0">
+      <h1>Iniciar sesión</h1>
+      <form id="loginForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="correo">Correo</label>
+            <input id="correo" type="email" required>
+          </div>
+          <div class="field">
+            <label for="contrasena">Contraseña</label>
+            <input id="contrasena" type="password" required>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn-primary" type="submit">Ingresar</button>
+        </div>
+        <div id="mensaje" class="message"></div>
+      </form>
+    </section>
+  </main>
+  <script src="js/login.js"></script>
+</body>
+</html>
