@@ -16,11 +16,8 @@
         <a href="index.html">Inicio</a>
         <a href="clientes.html">Clientes</a>
         <a href="productos.html">Productos</a>
-        <a href="categorias.html" class="active" data-roles="dueño administrador">Categorías</a>
+        <a href="categorias.html" class="active">Categorías</a>
         <a href="ventas.html">Ventas</a>
-        <a href="usuarios.html" data-roles="dueño">Usuarios</a>
-        <p id="usuarioActual"></p>
-        <button id="cerrarSesion" type="button" class="btn-secondary">Cerrar sesión</button>
       </nav>
     </aside>
     <main class="main">
@@ -29,7 +26,7 @@
         <p>Las categorías son registros independientes que se relacionan con los productos.</p>
       </header>
 
-      <section class="panel" data-roles="dueño administrador">
+      <section class="panel">
         <h2>Registrar categoría</h2>
         <div id="mensaje" class="message"></div>
         <form id="categoriaForm">
@@ -66,7 +63,6 @@
       </section>
     </main>
   </div>
-  <script src="js/sesion.js"></script>
   <script src="js/categorias.js"></script>
 </body>
 

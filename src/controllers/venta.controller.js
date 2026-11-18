@@ -2,7 +2,7 @@ const Venta= require('../models/venta.model');
 
 async function getVentas(req, res, next) {
     try{
-        res.json(await Venta.obtenerVentas(req.usuario));
+        res.json(await Venta.obtenerVentas());
     }catch(error){
         next(error);
     }
@@ -10,11 +10,8 @@ async function getVentas(req, res, next) {
 
 async function getVenta(req, res, next) {
     try{
-        const venta = await Venta.obtenerVentaPorid(req.params.id);
+        const venta = await Venta.obtenerVentasPorid(req.params.id);
         if(!venta) return res.status(404).json({mensaje: 'venta no encontrada'});
-        if (req.usuario.rol === 'trabajador' && venta.id_usuario !== req.usuario.id_usuario) {
-            return res.status(403).json({ mensaje: 'No puedes consultar esta venta.' });
-        }
         res.json(venta);
     }catch(error){
         next(error);
@@ -29,11 +26,7 @@ async function createVenta(req, res, next) {
                 mensaje: 'seleccione un cliente y agregue al menos un producto a la venta.'
             });
         }
-        const venta = await Venta.crearVenta({
-            id_cliente,
-            detalles,
-            id_usuario: req.usuario.id_usuario
-        });
+        const venta = await Venta.crearVenta({id_cliente, detalles});
         res.status(201).json({mensaje: 'venta creada correctamente', venta});
     }catch(error){
         next(error);

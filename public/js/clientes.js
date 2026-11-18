@@ -13,7 +13,7 @@ async function cargarClientes() {
       <td>${c.telefono}</td>
       <td>
          <button onclick="editarCliente(${c.id_cliente})">Editar</button>
-         <button data-roles="dueño administrador" onclick="eliminarCliente(${c.id_cliente})">Eliminar</button>
+         <button onclick="eliminarCliente(${c.id_cliente})">Eliminar</button>
       </td>
                                       
     </tr>
@@ -81,3 +81,4 @@ form.addEventListener('submit', async (event) => {
 });
 
 cargarClientes();
+

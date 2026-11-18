@@ -5,18 +5,17 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "crear-dueno": "node scripts/crear-dueno.js"
+    "dev": "nodemon server.js"
   },
+
   "dependencies": {
-    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.14.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }
+

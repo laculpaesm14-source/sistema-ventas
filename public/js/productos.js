@@ -25,8 +25,8 @@ async function cargarProductos() {
       <td>${p.precio}</td>
       <td>${p.stock}</td>
       <td>
-         <button data-roles="dueño administrador" onclick="editarProducto(${p.id_producto})">Editar</button>
-         <button data-roles="dueño administrador" onclick="eliminarProducto(${p.id_producto})">Eliminar</button>
+         <button onclick="editarProducto(${p.id_producto})">Editar</button>
+         <button onclick="eliminarProducto(${p.id_producto})">Eliminar</button>
       </td>
                                       
     </tr>
@@ -99,3 +99,4 @@ form.addEventListener('submit', async (event) => {
 
 cargarCategorias();
 cargarProductos();
+
