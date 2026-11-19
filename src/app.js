@@ -4,13 +4,18 @@ const productoRoutes = require('./routes/producto.routes');
 const categoriaRoutes = require('./routes/categoria.routes');
 const clienteRoutes = require('./routes/cliente.routes');
 const ventaRoutes = require('./routes/venta.routes');
+const authRoutes = require('./routes/auth.routes');
+const usuarioRoutes = require('./routes/usuario.routes');
 const path = require('path');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get('/', (req, res) => res.redirect('/login.html'));
 app.use(express.static(path.join(__dirname,'..','public')));
+app.use('/api/auth', authRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/productos', productoRoutes);
 app.use('/api/categorias', categoriaRoutes);
 app.use('/api/clientes', clienteRoutes);

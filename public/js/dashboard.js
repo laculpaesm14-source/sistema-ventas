@@ -7,9 +7,9 @@ const moneda =new Intl.NumberFormat('es-CO',{
 async function cargarDashboard() {
     try { 
         const [clientesRes, productosRes,ventasRes] = await Promise.all([
-            fetch('/api/clientes'),
-            fetch('/api/productos'),
-            fetch('/api/ventas')
+            apiFetch('/api/clientes'),
+            apiFetch('/api/productos'),
+            apiFetch('/api/ventas')
 
         ]);
         const clientes = await clientesRes.json();

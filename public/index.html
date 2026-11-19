@@ -11,15 +11,20 @@
             <aside class="sidebar">
                 <div class="brand">Sistema de Ventas</div>
                 <nav class="nav">
-                     <a href="index.html" class="active" >Inicio</a>
-                     <a href="clientes.html" class="active" >Clientes</a>
-                     <a href="productos.html" class="active" >Productos</a>
-                     <a href="categorias.html" class="active" >Categorías</a>
-                     <a href="ventas.html" class="active" >Ventas</a>
+                     <a href="index.html" class="active">Inicio</a>
+                     <a href="clientes.html">Clientes</a>
+                     <a href="productos.html">Productos</a>
+                     <a href="categorias.html">Categorías</a>
+                     <a href="ventas.html">Ventas</a>
+                     <a href="usuarios.html" data-roles="dueño">Usuarios</a>
 
                 </nav>
             </aside>
           <main class="main">
+            <div class="actions" style="justify-content:flex-end;margin-top:0">
+              <span id="nombreUsuario"></span>
+              <button id="cerrarSesion" class="btn-secondary" type="button">Cerrar sesión</button>
+            </div>
             <header class="page-header">
                 <h1>Panel Principal </h1>
                 <p>Ejemplo educativo:
@@ -41,9 +46,10 @@
                 controlador coordina; el modelo ejecuta SQL y
                 la API responde con JSON. 
             </p>
-         </section>"
+         </section>
        </main>
     </div>
+    <script src="js/sesion.js"></script>
     <script src="js/dashboard.js"></script>
     </body>
 </html>

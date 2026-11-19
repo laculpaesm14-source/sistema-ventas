@@ -10,12 +10,15 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="brand">Sistema de Ventas</div>
+      <p id="nombreUsuario"></p>
+      <button id="cerrarSesion" class="btn-secondary" type="button">Cerrar sesión</button>
       <nav class="nav">
         <a href="index.html" class="">Inicio</a>
 <a href="clientes.html" class="">Clientes</a>
 <a href="productos.html" class="active">Productos</a>
 <a href="categorias.html" class="">Categorías</a>
 <a href="ventas.html" class="">Ventas</a>
+<a href="usuarios.html" data-roles="dueño">Usuarios</a>
       </nav>
     </aside>
     <main class="main">
@@ -24,7 +27,7 @@
   <p>CRUD completo y ejemplo de clave foránea con categorías.</p>
 </header>
 
-<section class="panel">
+<section class="panel" data-roles="dueño administrador">
   <h2 id="formTitle">Registrar producto</h2>
   <div id="mensaje" class="message"></div>
   <form id="productoForm">
@@ -67,6 +70,7 @@
 </section>
     </main>
   </div>
+  <script src="js/sesion.js"></script>
   <script src="js/productos.js"></script>
 </body>
 </html>

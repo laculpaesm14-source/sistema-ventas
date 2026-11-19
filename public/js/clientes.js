@@ -1,7 +1,7 @@
 const API_CLIENTES = '/api/clientes';
 
 async function cargarClientes() {
-  const response = await fetch(API_CLIENTES);
+  const response = await apiFetch(API_CLIENTES);
   const clientes = await response.json();
 
   document.querySelector('#clientesBody').innerHTML = clientes.map(c => `
@@ -13,14 +13,15 @@ async function cargarClientes() {
       <td>${c.telefono}</td>
       <td>
          <button onclick="editarCliente(${c.id_cliente})">Editar</button>
-         <button onclick="eliminarCliente(${c.id_cliente})">Eliminar</button>
+         <button data-roles="dueño administrador" onclick="eliminarCliente(${c.id_cliente})">Eliminar</button>
       </td>
                                       
     </tr>
   `).join('');
+  aplicarPermisos();
 }
 async function editarCliente(id) {
-  const response = await fetch(`${API_CLIENTES}/${id}`);
+  const response = await apiFetch(`${API_CLIENTES}/${id}`);
   const cliente = await response.json();
 
   document.querySelector('#id_cliente').value = cliente.id_cliente;
@@ -33,7 +34,7 @@ async function editarCliente(id) {
 async function eliminarCliente(id) {
   if (!confirm('¿Está seguro de eliminar este cliente?')) return;
 
-  const response = await fetch(`${API_CLIENTES}/${id}`, {
+  const response = await apiFetch(`${API_CLIENTES}/${id}`, {
     method: 'DELETE'
   });
 
@@ -59,7 +60,7 @@ form.addEventListener('submit', async (event) => {
 
   const id = document.querySelector('#id_cliente').value;
 
- const response = await fetch(
+ const response = await apiFetch(
   id ? `${API_CLIENTES}/${id}` : API_CLIENTES,
   {
     method: id ? 'PUT' : 'POST',
@@ -81,4 +82,3 @@ form.addEventListener('submit', async (event) => {
 });
 
 cargarClientes();
-

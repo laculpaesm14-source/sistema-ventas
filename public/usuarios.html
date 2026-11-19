@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios | Sistema de Ventas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page-roles="dueño">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">Sistema de Ventas</div>
+      <p id="nombreUsuario"></p>
+      <button id="cerrarSesion" class="btn-secondary" type="button">Cerrar sesión</button>
+      <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="productos.html">Productos</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="ventas.html">Ventas</a>
+        <a href="usuarios.html" class="active">Usuarios</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="page-header">
+        <h1>Usuarios</h1>
+        <p>El dueño puede crear cuentas para administradores y trabajadores.</p>
+      </header>
+      <section class="panel">
+        <h2>Crear usuario</h2>
+        <div id="mensaje" class="message"></div>
+        <form id="usuarioForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" required>
+            </div>
+            <div class="field">
+              <label for="correo">Correo</label>
+              <input id="correo" type="email" required>
+            </div>
+            <div class="field">
+              <label for="contrasena">Contraseña (mínimo 8 caracteres)</label>
+              <input id="contrasena" type="password" minlength="8" required>
+            </div>
+            <div class="field">
+              <label for="rol">Rol</label>
+              <select id="rol" required>
+                <option value="trabajador">Trabajador</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn-primary" type="submit">Crear usuario</button>
+          </div>
+        </form>
+      </section>
+      <section class="panel" style="margin-top:18px">
+        <h2>Usuarios registrados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Activo</th></tr></thead>
+            <tbody id="usuariosBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/sesion.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

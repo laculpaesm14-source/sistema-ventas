@@ -2,7 +2,7 @@ const API_PRODUCTOS = '/api/productos';
 const API_CATEGORIAS = '/api/categorias';
 
 async function cargarCategorias() {
-  const response = await fetch(API_CATEGORIAS);
+  const response = await apiFetch(API_CATEGORIAS);
   const categorias = await response.json();
 
   document.querySelector('#id_categoria').innerHTML = `
@@ -14,7 +14,7 @@ async function cargarCategorias() {
 }
 
 async function cargarProductos() {
-  const response = await fetch(API_PRODUCTOS);
+  const response = await apiFetch(API_PRODUCTOS);
   const productos = await response.json();
 
   document.querySelector('#productosBody').innerHTML = productos.map(p => `
@@ -25,15 +25,16 @@ async function cargarProductos() {
       <td>${p.precio}</td>
       <td>${p.stock}</td>
       <td>
-         <button onclick="editarProducto(${p.id_producto})">Editar</button>
-         <button onclick="eliminarProducto(${p.id_producto})">Eliminar</button>
+         <button data-roles="dueño administrador" onclick="editarProducto(${p.id_producto})">Editar</button>
+         <button data-roles="dueño administrador" onclick="eliminarProducto(${p.id_producto})">Eliminar</button>
       </td>
                                       
     </tr>
   `).join('');
+  aplicarPermisos();
 }
 async function editarProducto(id) {
-  const response = await fetch(`${API_PRODUCTOS}/${id}`);
+  const response = await apiFetch(`${API_PRODUCTOS}/${id}`);
   const producto = await response.json();
 
   document.querySelector('#id_producto').value = producto.id_producto;
@@ -46,7 +47,7 @@ async function editarProducto(id) {
 async function eliminarProducto(id) {
   if (!confirm('¿Está seguro de eliminar este producto?')) return;
 
-  const response = await fetch(`${API_PRODUCTOS}/${id}`, {
+  const response = await apiFetch(`${API_PRODUCTOS}/${id}`, {
     method: 'DELETE'
   });
 
@@ -72,7 +73,7 @@ form.addEventListener('submit', async (event) => {
 
   const id = document.querySelector('#id_producto').value;
 
- const response = await fetch(
+ const response = await apiFetch(
   id ? `${API_PRODUCTOS}/${id}` : API_PRODUCTOS,
   {
     method: id ? 'PUT' : 'POST',
@@ -99,4 +100,3 @@ form.addEventListener('submit', async (event) => {
 
 cargarCategorias();
 cargarProductos();
-

@@ -22,8 +22,8 @@ function mostrarMensaje(texto, esError = false) {
 
 async function cargarDatosIniciales() {
   const [clientesRes, productosRes] = await Promise.all([
-    fetch(API_CLIENTES),
-    fetch(API_PRODUCTOS)
+    apiFetch(API_CLIENTES),
+    apiFetch(API_PRODUCTOS)
   ]);
 
   const clientes = await clientesRes.json();
@@ -109,7 +109,7 @@ document.querySelector('#guardarVenta').addEventListener('click', async () => {
     }))
   };
 
-  const response = await fetch(API_VENTAS, {
+  const response = await apiFetch(API_VENTAS, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -129,7 +129,7 @@ document.querySelector('#guardarVenta').addEventListener('click', async () => {
 });
 
 async function cargarVentas() {
-  const response = await fetch(API_VENTAS);
+  const response = await apiFetch(API_VENTAS);
   const ventas = await response.json();
 
   document.querySelector('#ventasBody').innerHTML = ventas.map(venta => `
@@ -144,7 +144,7 @@ async function cargarVentas() {
 }
 
 async function verDetalle(id) {
-  const response = await fetch(`${API_VENTAS}/${id}`);
+  const response = await apiFetch(`${API_VENTAS}/${id}`);
   const venta = await response.json();
 
   document.querySelector('#detalleContenido').innerHTML = `

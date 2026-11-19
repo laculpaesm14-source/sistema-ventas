@@ -5,13 +5,13 @@ const mensaje = document.querySelector('#mensaje');
 
 function mostrarMensaje(texto, esError = false){
     mensaje.textContent = texto;
-    mensaje.className = `message${esError ? 'error':''}`;
+    mensaje.className = `message${esError ? ' error' : ''}`;
     mensaje.style.display = 'block';
     setTimeout(() => mensaje.style.display = 'none', 3000);
 }
 
 async function cargarCategorias() {
-    const response = await fetch(API_CATEGORIAS);
+    const response = await apiFetch(API_CATEGORIAS);
     const categorias = await response.json();
 
     tbody.innerHTML = categorias.map(categoria => `
@@ -31,7 +31,7 @@ form.addEventListener('submit', async (event) => {
     descripcion: document.querySelector('#descripcion').value.trim()
   };
 
-  const response = await fetch(API_CATEGORIAS, {
+  const response = await apiFetch(API_CATEGORIAS, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(categoria)
